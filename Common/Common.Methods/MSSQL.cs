@@ -89,6 +89,7 @@ namespace Common.Methods
             if (OConn != null)
             {
                 OConn.Close();
+                Connected = false;
                 OConn.Dispose();
             }
             OConn = null;
@@ -742,6 +743,25 @@ namespace Common.Methods
             try
             {
                 var cmd = new SqlCommand(Query, OConn) { CommandType = CommandType.Text };
+                if (parameters != null)
+                    foreach (var param in parameters)
+                        cmd.Parameters.Add(param);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+            return result;
+        }
+
+        public OperationResult ExecuteQuery(List<SqlParameter> parameters, string Query, SqlTransaction trans)
+        {
+            var result = new OperationResult();
+            try
+            {
+                var cmd = new SqlCommand(Query, OConn) { CommandType = CommandType.Text, Transaction = trans };
                 if (parameters != null)
                     foreach (var param in parameters)
                         cmd.Parameters.Add(param);
