@@ -529,6 +529,24 @@ namespace Common.Methods
             return result;
         }
 
+        public OperationResult GetQueryResult(List<SqlParameter> parameters, string query, out DataTable dtResult)
+        {
+            var result = new OperationResult();
+            dtResult = new DataTable();
+            try
+            {
+                var oCmd = new SqlCommand(query, OConn) { CommandType = CommandType.Text };
+                dtResult = loaDataTableNoOutput(parameters, oCmd);
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+
+            return result;
+        }
+        
         public OperationResult GetData(List<SqlParameter> parameters, string sProc, SqlTransaction trans,
             out DataTable dtResult)
         {
@@ -602,6 +620,21 @@ namespace Common.Methods
             var drResults = oCmd.ExecuteReader();
             dtResult.Load(drResults);
             if ((Status)oCmd.Parameters["@DBStatus"].Value != Status.Success) dtResult = null;
+
+            return dtResult;
+        }
+        private DataTable loaDataTableNoOutput(List<SqlParameter> parameters, SqlCommand oCmd)
+        {
+            var dtResult = new DataTable();
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                    oCmd.Parameters.Add(param);
+            }
+            
+            oCmd.CommandTimeout = 120;
+            var drResults = oCmd.ExecuteReader();
+            dtResult.Load(drResults);
 
             return dtResult;
         }
