@@ -67,6 +67,23 @@ namespace Common.Methods
             return result;
         }
 
+        public OperationResult Connect(string ConnectionString)
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                OConn = new SqlConnection(ConnectionString);
+                OConn.Open();
+                Connected = true;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+            return result;
+        }
+
         public void CloseConnection()
         {
             if (OConn != null)
