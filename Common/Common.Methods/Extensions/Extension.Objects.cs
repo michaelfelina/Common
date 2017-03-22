@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Common.Methods.Extensions
+namespace Common.Methods
 {
     public static class ExtensionsObject
     {

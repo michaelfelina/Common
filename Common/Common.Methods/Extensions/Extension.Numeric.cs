@@ -1,4 +1,4 @@
-﻿namespace Common.Methods.Extensions
+﻿namespace Common.Methods
 {
     public static class ExtensionsNumeric
     {

@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Application = Microsoft.Office.Interop.Excel.Application;
 
-namespace Common.Methods.Extensions
+namespace Common.Methods
 {
     public static class ExtensionsExport
     {

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Common.Methods.Extensions
+namespace Common.Methods
 {
     public static class ImageExtensions
     {

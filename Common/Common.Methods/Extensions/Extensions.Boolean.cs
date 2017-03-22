@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Methods.Extensions
+namespace Common.Methods
 {
     public static class ExtensionsBoolean
     {

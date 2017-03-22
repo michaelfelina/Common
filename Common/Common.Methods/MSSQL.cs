@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 using Common.Methods.Enumumerators;
-using Common.Methods.Extensions;
+using Common.Methods;
 
 namespace Common.Methods
 {
@@ -746,6 +746,22 @@ namespace Common.Methods
                 if (parameters != null)
                     foreach (var param in parameters)
                         cmd.Parameters.Add(param);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+            return result;
+        }
+
+        public OperationResult ExecuteQuery(string Query)
+        {
+            var result = new OperationResult();
+            try
+            {
+                var cmd = new SqlCommand(Query, OConn) { CommandType = CommandType.Text };
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
