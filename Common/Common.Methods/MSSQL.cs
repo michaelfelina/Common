@@ -69,7 +69,7 @@ namespace Common.Methods
 
         public OperationResult Connect(string ConnectionString)
         {
-            OperationResult result = new OperationResult();
+            var result = new OperationResult();
             try
             {
                 OConn = new SqlConnection(ConnectionString);

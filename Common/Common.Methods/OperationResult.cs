@@ -2,13 +2,13 @@
 
 namespace Common.Methods
 {
-    public class OperationResult
+    public abstract class AOperationResult
     {
         public bool Success { get; set; }
         public List<string> MessageList { get; private set; }
         public string ErrorMessage => SetValue();
-
-        public OperationResult()
+        
+        public AOperationResult()
         {
             Success = true;
             MessageList = new List<string>();
@@ -38,5 +38,15 @@ namespace Common.Methods
             }
             return result;
         }
+    }
+    public class OperationResult<T>: AOperationResult where T : class
+    {
+        public List<T> results { get; set; }
+        public T result { get; set; }
+    }
+
+    public class OperationResult : AOperationResult
+    {
+        
     }
 }
