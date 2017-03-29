@@ -408,6 +408,56 @@ namespace Common.Methods
         }
 
         public OperationResult Save(List<SqlParameter> parameters, string sProc,
+            ref int newId, SqlConnection cn)
+        {
+            var result = new OperationResult();
+
+            try
+            {
+                var cmd = new SqlCommand(sProc, cn)
+                {
+                    CommandType = CommandType.StoredProcedure,
+                };
+                if (parameters != null)
+                {
+                    foreach (var param in parameters)
+                        cmd.Parameters.Add(param);
+                }
+                var oParam = cmd.Parameters.Add(new SqlParameter("@DBStatus", SqlDbType.Int));
+                oParam.Direction = ParameterDirection.Output;
+
+                oParam = cmd.Parameters.Add(new SqlParameter("@NewID", SqlDbType.Int));
+                oParam.Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+                if ((Status)cmd.Parameters["@DBStatus"].Value == Status.Success)
+                {
+                    if (newId == -1)
+                    {
+                        newId = cmd.Parameters["@NewID"].Value.ToInt();
+                        if (newId <= 0)
+                        {
+                            result.Success = false;
+                            result.Add("No ID returned from database after insert");
+                        }
+                    }
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Add("Save Failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+
+            return result;
+        }
+
+        public OperationResult Save(List<SqlParameter> parameters, string sProc,
             ref int newId,  ref int errorCode, SqlConnection cn)
         {
             var result = new OperationResult();
