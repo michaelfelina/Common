@@ -580,6 +580,23 @@ namespace Common.Methods
             return result;
         }
 
+        public OperationResult<DataTable> GetData(List<SqlParameter> parameters, string sProc)
+        {
+            var result = new OperationResult<DataTable>();
+            try
+            {
+                var oCmd = new SqlCommand(sProc, OConn) { CommandType = CommandType.StoredProcedure };
+                result.result = loaDataTable(parameters, oCmd);
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Add(ex.Message);
+            }
+
+            return result;
+        }
+
         public OperationResult GetQueryResult(List<SqlParameter> parameters, string query, out DataTable dtResult)
         {
             var result = new OperationResult();
