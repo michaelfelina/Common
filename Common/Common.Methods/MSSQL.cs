@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Configuration;
 using System.Runtime.CompilerServices;
 using Common.Methods.Enumumerators;
 using Common.Methods;
 
 namespace Common.Methods
 {
+
     public enum AuthenticationType
     {
         SQLAuthentication = 1,
@@ -25,6 +28,19 @@ namespace Common.Methods
 
     public class MSSQL
     {
+        static readonly string appPath =
+            Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+        static readonly string configFile = Path.Combine(appPath, "App.config");
+
+        static readonly ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap
+        {
+            ExeConfigFilename = configFile
+        };
+
+        readonly Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap,
+            ConfigurationUserLevel.None);
+
         public SqlConnection OConn { get; set; }
         public AuthenticationType Authentication { get; set; }
 
@@ -32,6 +48,69 @@ namespace Common.Methods
         public string Database { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+
+        public OperationResult GetSetting(string ConnectionName)
+        {
+            var operationResult = new OperationResult();
+            try
+            {
+                var connectionString = config.ConnectionStrings.ConnectionStrings[ConnectionName].ConnectionString;
+                var sqlConnection = new SqlConnectionStringBuilder(connectionString);
+                Server = sqlConnection.DataSource;
+                Database = sqlConnection.InitialCatalog;
+                if (!sqlConnection.IntegratedSecurity)
+                {
+                    Username = sqlConnection.UserID;
+                    Password = sqlConnection.Password;
+                }
+                operationResult.Success = true;
+            }
+            catch (Exception ex)
+            {
+                operationResult.Success = false;
+                operationResult.MessageList.Add(ex.Message);
+            }
+            return operationResult;
+        }
+
+        public OperationResult SaveSetting(string ConnectionName)
+        {
+            var operationResult = new OperationResult();
+            try
+            {
+                string connectionString;
+                if (Authentication == AuthenticationType.WindowsAuthentication)
+                    connectionString = $"server={Server};" +
+                                       $"database={Database};" +
+                                       $"integrated security=true;";
+                else
+                    connectionString = $"server={Server};" +
+                                       $"database={Database};" +
+                                       $"integrated security=False;" +
+                                       $"uid={Username};" +
+                                       $"password={Password}";
+
+                if (config.ConnectionStrings.ConnectionStrings[ConnectionName] == null)
+                {
+                    var connectionStrings = new ConnectionStringSettings
+                    {
+                        Name = ConnectionName,
+                        ConnectionString = connectionString
+                    };
+                    config.ConnectionStrings.ConnectionStrings.Add(connectionStrings);
+                }
+                else config.ConnectionStrings.ConnectionStrings[ConnectionName].ConnectionString = connectionString;
+
+                config.Save(ConfigurationSaveMode.Modified);
+                operationResult.Success = true;
+            }
+            catch (Exception ex)
+            {
+                operationResult.Success = false;
+                operationResult.MessageList.Add(ex.Message);
+            }
+            return operationResult;
+        }
 
         public bool Connected { get; set; }
 

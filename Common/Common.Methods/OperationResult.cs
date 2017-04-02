@@ -47,6 +47,6 @@ namespace Common.Methods
 
     public class OperationResult : AOperationResult
     {
-        
+        public bool IsTrue { get; set; }
     }
 }
