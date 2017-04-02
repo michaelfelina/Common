@@ -62,7 +62,9 @@ namespace Common.Methods
                 {
                     Username = sqlConnection.UserID;
                     Password = sqlConnection.Password;
+                    Authentication = AuthenticationType.SQLAuthentication;
                 }
+                else Authentication = AuthenticationType.WindowsAuthentication;
                 operationResult.Success = true;
             }
             catch (Exception ex)
