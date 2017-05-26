@@ -285,7 +285,7 @@ namespace Common.Methods
                     {
                         if (newId == -1)
                         {
-                            newId = cmd.Parameters["@NewID"].ToInt();
+                            newId = cmd.Parameters["@NewID"].Value.ToInt();
                             if (newId <= 0)
                             {
                                 result.Success = false;

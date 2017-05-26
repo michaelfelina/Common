@@ -13,17 +13,9 @@ namespace Common.Methods
             Success = true;
             MessageList = new List<string>();
         }
-        public void Add(List<string> errorMessage)
-        {
-            MessageList.AddRange(errorMessage);
-            //SetValue();
-        }
+        public void Add(List<string> errorMessage) => MessageList.AddRange(errorMessage);
 
-        public void Add(string processError)
-        {
-            MessageList.Add(processError);
-            //SetValue();
-        }
+        public void Add(string errorMessages) => MessageList.Add(errorMessages);
 
         private string SetValue()
         {
@@ -41,7 +33,6 @@ namespace Common.Methods
     }
     public class OperationResult<T>: AOperationResult where T : class
     {
-        public List<T> results { get; set; }
         public T result { get; set; }
     }
 

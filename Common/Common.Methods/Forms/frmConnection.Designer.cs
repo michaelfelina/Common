@@ -1,4 +1,4 @@
-﻿namespace Common.Methods.Forms
+﻿namespace Common.Methods
 {
     partial class frmConnection
     {
@@ -39,7 +39,7 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtServer = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtDatabase = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(116, 332);
+            this.pictureBox2.Size = new System.Drawing.Size(116, 307);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 67;
             this.pictureBox2.TabStop = false;
@@ -61,7 +61,7 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(198, 20);
+            this.Label1.Location = new System.Drawing.Point(155, 20);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(212, 23);
             this.Label1.TabIndex = 62;
@@ -71,7 +71,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(198, 62);
+            this.Label2.Location = new System.Drawing.Point(155, 62);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(100, 19);
             this.Label2.TabIndex = 63;
@@ -81,7 +81,7 @@
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(218, 193);
+            this.Label3.Location = new System.Drawing.Point(175, 193);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(80, 19);
             this.Label3.TabIndex = 64;
@@ -91,7 +91,7 @@
             // 
             this.optSQLAuthentication.AutoSize = true;
             this.optSQLAuthentication.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optSQLAuthentication.Location = new System.Drawing.Point(202, 156);
+            this.optSQLAuthentication.Location = new System.Drawing.Point(159, 156);
             this.optSQLAuthentication.Name = "optSQLAuthentication";
             this.optSQLAuthentication.Size = new System.Drawing.Size(244, 23);
             this.optSQLAuthentication.TabIndex = 57;
@@ -102,7 +102,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(218, 226);
+            this.Label4.Location = new System.Drawing.Point(175, 226);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(76, 19);
             this.Label4.TabIndex = 65;
@@ -113,7 +113,7 @@
             this.optWindowsAuthentication.AutoSize = true;
             this.optWindowsAuthentication.Checked = true;
             this.optWindowsAuthentication.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optWindowsAuthentication.Location = new System.Drawing.Point(202, 127);
+            this.optWindowsAuthentication.Location = new System.Drawing.Point(159, 127);
             this.optWindowsAuthentication.Name = "optWindowsAuthentication";
             this.optWindowsAuthentication.Size = new System.Drawing.Size(229, 23);
             this.optWindowsAuthentication.TabIndex = 56;
@@ -126,7 +126,7 @@
             // 
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(198, 95);
+            this.Label5.Location = new System.Drawing.Point(155, 95);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(73, 19);
             this.Label5.TabIndex = 66;
@@ -136,7 +136,7 @@
             // 
             this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(347, 258);
+            this.btnSave.Location = new System.Drawing.Point(304, 258);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(123, 33);
             this.btnSave.TabIndex = 61;
@@ -147,28 +147,28 @@
             // txtServer
             // 
             this.txtServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServer.Location = new System.Drawing.Point(304, 62);
+            this.txtServer.Location = new System.Drawing.Point(261, 62);
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(166, 26);
             this.txtServer.TabIndex = 54;
             // 
-            // btnCancel
+            // btnTest
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(202, 258);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(123, 33);
-            this.btnCancel.TabIndex = 60;
-            this.btnCancel.Text = "Test ";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTest.Location = new System.Drawing.Point(159, 258);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(123, 33);
+            this.btnTest.TabIndex = 60;
+            this.btnTest.Text = "Test ";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // txtUsername
             // 
             this.txtUsername.Enabled = false;
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(304, 193);
+            this.txtUsername.Location = new System.Drawing.Point(261, 193);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '*';
             this.txtUsername.Size = new System.Drawing.Size(166, 26);
@@ -177,7 +177,7 @@
             // txtDatabase
             // 
             this.txtDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDatabase.Location = new System.Drawing.Point(304, 95);
+            this.txtDatabase.Location = new System.Drawing.Point(261, 95);
             this.txtDatabase.Name = "txtDatabase";
             this.txtDatabase.Size = new System.Drawing.Size(166, 26);
             this.txtDatabase.TabIndex = 55;
@@ -186,7 +186,7 @@
             // 
             this.txtPassword.Enabled = false;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(304, 226);
+            this.txtPassword.Location = new System.Drawing.Point(261, 226);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(166, 26);
@@ -197,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(540, 332);
+            this.ClientSize = new System.Drawing.Size(447, 307);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.Label2);
@@ -208,7 +208,7 @@
             this.Controls.Add(this.Label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtServer);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtDatabase);
             this.Controls.Add(this.txtPassword);
@@ -216,8 +216,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmConnection";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Database Connection";
             this.Load += new System.EventHandler(this.frmConnection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -236,11 +237,11 @@
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.RadioButton optWindowsAuthentication;
         internal System.Windows.Forms.Label Label5;
+        internal System.Windows.Forms.Button btnSave;
         internal System.Windows.Forms.TextBox txtServer;
-        internal System.Windows.Forms.Button btnCancel;
+        internal System.Windows.Forms.Button btnTest;
         internal System.Windows.Forms.TextBox txtUsername;
         internal System.Windows.Forms.TextBox txtDatabase;
         internal System.Windows.Forms.TextBox txtPassword;
-        public System.Windows.Forms.Button btnSave;
     }
 }
